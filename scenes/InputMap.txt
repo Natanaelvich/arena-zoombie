@@ -1,0 +1,65 @@
+# Instruções para configurar o InputMap como um Singleton (Autoload) no Godot
+
+## Por que configurar o InputMap como um Singleton?
+
+Configurar o InputMap como um Singleton permite que você defina os controles do jogo uma vez e os tenha disponíveis em todas as cenas. Isso é útil para garantir consistência nos controles e facilitar a implementação de um sistema de configuração de controles.
+
+## Configuração do InputMap como Singleton
+
+1. Certifique-se de que o script "InputMap.gd" está criado na pasta "scripts"
+
+2. Abra o editor Godot
+
+3. Vá para Project > Project Settings
+
+4. Selecione a aba "Autoload"
+
+5. Configure o InputMap:
+   - Path: Clique no ícone de pasta e navegue até "res://scripts/InputMap.gd"
+   - Node Name: "InputMapManager" (usamos um nome diferente para evitar conflito com a classe InputMap do Godot)
+   - Enabled: Marque esta opção
+   - Clique em "Add" para adicionar o InputMapManager como um Singleton
+
+6. Clique em "OK" para fechar a janela de configurações do projeto
+
+## Configuração das Ações de Input no Editor
+
+Além de configurar o InputMap via script, você também pode configurar as ações de input diretamente no editor:
+
+1. Vá para Project > Project Settings
+
+2. Selecione a aba "Input Map"
+
+3. Adicione as seguintes ações (se ainda não existirem):
+   - "move_up"
+   - "move_down"
+   - "move_left"
+   - "move_right"
+   - "shoot"
+   - "pause"
+
+4. Para cada ação, adicione os eventos de input desejados:
+   - "move_up": W, Seta para cima
+   - "move_down": S, Seta para baixo
+   - "move_left": A, Seta para esquerda
+   - "move_right": D, Seta para direita
+   - "shoot": Botão esquerdo do mouse
+   - "pause": Esc, P
+
+## Como usar o InputMapManager em outras cenas
+
+Agora que o InputMapManager está configurado como um Singleton, você pode acessá-lo de qualquer script usando:
+
+```gdscript
+# Se precisar reconfigurar os controles em tempo de execução
+InputMapManager.setup_movement_controls()
+```
+
+No entanto, como o InputMapManager configura os controles no método `_ready()`, você normalmente não precisará chamá-lo explicitamente.
+
+## Observações
+
+- O InputMapManager será carregado antes de qualquer cena, então os controles estarão configurados desde o início do jogo.
+- Se você quiser implementar um sistema de configuração de controles, você pode adicionar métodos ao InputMapManager para salvar e carregar configurações personalizadas.
+- Lembre-se de que o InputMap do Godot é global, então as alterações feitas pelo InputMapManager afetarão todo o jogo.
+- Se você precisar modificar o script do InputMapManager, as alterações serão aplicadas automaticamente na próxima vez que o jogo for executado. 

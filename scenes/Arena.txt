@@ -1,0 +1,99 @@
+# Instruções para criar a cena da Arena no Godot
+
+## Estrutura da Cena
+
+1. Crie uma nova cena com um nó raiz do tipo Node2D chamado "Arena"
+
+2. Adicione os seguintes nós à cena:
+   - StaticBody2D (nome: "Walls")
+     - CollisionShape2D (para cada parede)
+     - ColorRect (para cada parede, para visualização)
+   - ColorRect (nome: "Floor")
+   - Node2D (nome: "SpawnPoints")
+     - Marker2D (vários pontos de spawn para os zumbis)
+   - Node2D (nome: "ZombieContainer")
+     - Este nó será usado para conter os zumbis que serão instanciados
+
+## Configuração do Chão (Floor)
+
+1. Selecione o nó "Floor"
+2. No painel Inspector, defina:
+   - Layout > Position: (0, 0)
+   - Layout > Size: (1024, 600) (ou o tamanho desejado para a arena)
+   - Color: #3B3B3B (cinza escuro) ou a cor desejada para o chão
+
+## Configuração das Paredes (Walls)
+
+1. Selecione o nó "Walls"
+2. Adicione 4 CollisionShape2D e 4 ColorRect para criar as paredes ao redor da arena:
+
+   ### Parede Superior
+   - CollisionShape2D:
+     - Position: (512, -10)
+     - Shape: RectangleShape2D (1044, 20)
+   - ColorRect:
+     - Position: (0, -20)
+     - Size: (1024, 20)
+     - Color: #1A1A1A (preto acinzentado) ou a cor desejada
+
+   ### Parede Inferior
+   - CollisionShape2D:
+     - Position: (512, 610)
+     - Shape: RectangleShape2D (1044, 20)
+   - ColorRect:
+     - Position: (0, 600)
+     - Size: (1024, 20)
+     - Color: #1A1A1A
+
+   ### Parede Esquerda
+   - CollisionShape2D:
+     - Position: (-10, 300)
+     - Shape: RectangleShape2D (20, 640)
+   - ColorRect:
+     - Position: (-20, 0)
+     - Size: (20, 600)
+     - Color: #1A1A1A
+
+   ### Parede Direita
+   - CollisionShape2D:
+     - Position: (1034, 300)
+     - Shape: RectangleShape2D (20, 640)
+   - ColorRect:
+     - Position: (1024, 0)
+     - Size: (20, 600)
+     - Color: #1A1A1A
+
+## Configuração dos Pontos de Spawn (SpawnPoints)
+
+1. Selecione o nó "SpawnPoints"
+2. Adicione vários Marker2D como filhos, posicionados ao redor da arena:
+   - Marker2D (nome: "Spawn1"): Position: (-50, 100)
+   - Marker2D (nome: "Spawn2"): Position: (-50, 300)
+   - Marker2D (nome: "Spawn3"): Position: (-50, 500)
+   - Marker2D (nome: "Spawn4"): Position: (1074, 100)
+   - Marker2D (nome: "Spawn5"): Position: (1074, 300)
+   - Marker2D (nome: "Spawn6"): Position: (1074, 500)
+   - Marker2D (nome: "Spawn7"): Position: (200, -50)
+   - Marker2D (nome: "Spawn8"): Position: (500, -50)
+   - Marker2D (nome: "Spawn9"): Position: (800, -50)
+   - Marker2D (nome: "Spawn10"): Position: (200, 650)
+   - Marker2D (nome: "Spawn11"): Position: (500, 650)
+   - Marker2D (nome: "Spawn12"): Position: (800, 650)
+
+## Adicionando Elementos Visuais (Opcional)
+
+Para adicionar mais detalhes visuais à arena, você pode:
+
+1. Adicionar manchas de sangue ou marcas de arranhões usando Sprite2D
+2. Adicionar objetos decorativos como caixas, barris ou escombros
+3. Adicionar iluminação usando nós Light2D para criar um ambiente mais atmosférico
+
+## Salvando a Cena
+
+Salve a cena como "Arena.tscn" na pasta "scenes"
+
+## Observações
+
+- Esta é apenas uma configuração básica. Você pode ajustar as dimensões e cores conforme necessário.
+- Quando as imagens estiverem disponíveis, substitua os ColorRect por Sprite2D com as texturas apropriadas.
+- Os pontos de spawn estão posicionados fora da arena para que os zumbis apareçam além das paredes. 

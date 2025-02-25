@@ -1,0 +1,121 @@
+# Instruções para criar a cena Principal no Godot
+
+## Estrutura da Cena
+
+1. Crie uma nova cena com um nó raiz do tipo Node2D chamado "Main"
+
+2. Adicione os seguintes nós à cena:
+   - Arena (instância da cena Arena.tscn)
+   - Player (instância da cena Player.tscn)
+   - CanvasLayer (nome: "UI")
+     - (Elementos da interface do usuário)
+   - Timer (nome: "SpawnTimer", para controlar o spawn de zumbis)
+   - AudioStreamPlayer (nome: "MusicPlayer", para música de fundo)
+   - AudioStreamPlayer (nome: "GameOverSound", para som de game over)
+
+## Configuração da Cena Principal
+
+1. Selecione o nó raiz "Main"
+2. No painel Inspector:
+   - Anexe o script "Main.gd" ao nó
+   - Configure as propriedades exportadas:
+     - zombie_scene: Carregue a cena Zombie.tscn
+     - player_scene: Carregue a cena Player.tscn
+
+## Configuração da Arena
+
+1. Selecione o nó "Arena"
+2. No painel Inspector:
+   - Certifique-se de que a posição está em (0, 0)
+
+## Configuração do Jogador
+
+1. Selecione o nó "Player"
+2. No painel Inspector:
+   - Position: (512, 300) (ou o centro da sua arena)
+
+## Configuração da UI
+
+1. Selecione o nó "UI"
+2. Adicione os seguintes nós filhos:
+   
+   - HBoxContainer (nome: "ScoreContainer")
+     - Position: (20, 20)
+     - Label (nome: "ScoreLabel")
+       - Text: "Score: 0"
+       - Font Size: 24
+   
+   - HBoxContainer (nome: "WaveContainer")
+     - Position: (20, 60)
+     - Label (nome: "WaveLabel")
+       - Text: "Wave: 1"
+       - Font Size: 24
+   
+   - HBoxContainer (nome: "HealthContainer")
+     - Position: (20, 100)
+     - Label (nome: "HealthLabel")
+       - Text: "Health:"
+       - Font Size: 24
+     - ProgressBar (nome: "HealthBar")
+       - Min Value: 0
+       - Max Value: 100
+       - Value: 100
+       - Size: (200, 24)
+       - Custom Styles: Configure para ter uma barra vermelha
+   
+   - Panel (nome: "GameOverPanel")
+     - Visible: Off (será ativado quando o jogo terminar)
+     - Size: (400, 300)
+     - Anchor: Center
+     - VBoxContainer:
+       - Label (nome: "GameOverLabel")
+         - Text: "GAME OVER"
+         - Font Size: 48
+         - Align: Center
+       - Label (nome: "FinalScoreLabel")
+         - Text: "Final Score: 0"
+         - Font Size: 32
+         - Align: Center
+       - Button (nome: "RestartButton")
+         - Text: "Restart"
+         - Font Size: 24
+         - Size: (200, 50)
+
+3. Anexe o script "UI.gd" ao nó "UI"
+
+## Configuração do Timer de Spawn
+
+1. Selecione o nó "SpawnTimer"
+2. No painel Inspector:
+   - Wait Time: 3.0 (3 segundos entre spawns inicialmente)
+   - Autostart: Off (será iniciado pelo script)
+
+## Configuração do Áudio
+
+1. Selecione o nó "MusicPlayer"
+2. No painel Inspector:
+   - Stream: (Quando tiver o arquivo de música, adicione-o aqui)
+   - Volume DB: -15
+   - Autoplay: On
+
+3. Selecione o nó "GameOverSound"
+4. No painel Inspector:
+   - Stream: (Quando tiver o arquivo de som, adicione-o aqui)
+   - Volume DB: -10
+   - Autoplay: Off
+
+## Salvando a Cena
+
+Salve a cena como "Main.tscn" na pasta "scenes"
+
+## Configuração do Projeto
+
+1. Vá para Project > Project Settings > Application > Run
+2. Configure a Main Scene para "res://scenes/Main.tscn"
+
+## Observações
+
+- Esta é uma configuração básica. Você pode ajustar os valores conforme necessário.
+- Certifique-se de que todas as cenas referenciadas (Arena.tscn, Player.tscn, Zombie.tscn) foram criadas antes de montar esta cena.
+- Quando as imagens e sons estiverem disponíveis, adicione-os nos locais apropriados.
+- Você pode adicionar mais elementos à UI conforme necessário, como um botão de pausa, configurações, etc. 

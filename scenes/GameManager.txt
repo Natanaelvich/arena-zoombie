@@ -1,0 +1,45 @@
+# Instruções para configurar o GameManager como um Singleton (Autoload) no Godot
+
+## O que é um Singleton (Autoload)?
+
+No Godot, um Singleton (ou Autoload) é um script que é carregado automaticamente quando o jogo inicia e permanece disponível em todas as cenas. Isso é útil para gerenciar dados globais, como pontuação, configurações do jogo, etc.
+
+## Configuração do GameManager como Singleton
+
+1. Certifique-se de que o script "GameManager.gd" está criado na pasta "scripts"
+
+2. Abra o editor Godot
+
+3. Vá para Project > Project Settings
+
+4. Selecione a aba "Autoload"
+
+5. Configure o GameManager:
+   - Path: Clique no ícone de pasta e navegue até "res://scripts/GameManager.gd"
+   - Node Name: "GameManager"
+   - Enabled: Marque esta opção
+   - Clique em "Add" para adicionar o GameManager como um Singleton
+
+6. Clique em "OK" para fechar a janela de configurações do projeto
+
+## Como usar o GameManager em outras cenas
+
+Agora que o GameManager está configurado como um Singleton, você pode acessá-lo de qualquer script usando:
+
+```gdscript
+var game_manager = get_node("/root/GameManager")
+```
+
+Ou simplesmente:
+
+```gdscript
+var score = GameManager.score
+GameManager.add_score(10)
+```
+
+## Observações
+
+- O GameManager será carregado antes de qualquer cena, então você pode usá-lo para inicializar o jogo.
+- Como o GameManager é um Singleton, ele permanecerá na memória durante toda a execução do jogo, então é um bom lugar para armazenar dados que precisam persistir entre cenas.
+- Evite adicionar muitos nós como filhos do GameManager, pois isso pode tornar o jogo mais lento. Use-o principalmente para armazenar dados e lógica de gerenciamento.
+- Se você precisar modificar o script do GameManager, as alterações serão aplicadas automaticamente na próxima vez que o jogo for executado. 

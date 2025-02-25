@@ -1,0 +1,96 @@
+# Instruções para criar a cena do Jogador no Godot
+
+## Estrutura da Cena
+
+1. Crie uma nova cena com um nó raiz do tipo CharacterBody2D chamado "Player"
+
+2. Adicione os seguintes nós à cena:
+   - CollisionShape2D (para colisão do jogador)
+   - Sprite2D (para a aparência visual do jogador)
+   - Camera2D (para seguir o jogador)
+   - AnimationPlayer (para animações)
+   - Timer (nome: "InvincibilityTimer", para período de invencibilidade após ser atingido)
+   - AudioStreamPlayer2D (nome: "ShootSound", para som de tiro)
+   - AudioStreamPlayer2D (nome: "HitSound", para som quando é atingido)
+
+## Configuração do Jogador
+
+1. Selecione o nó raiz "Player"
+2. No painel Inspector:
+   - Collision > Collision Layer: 1
+   - Collision > Collision Mask: 2 (para colidir com zumbis)
+   - Anexe o script "Player.gd" ao nó
+
+## Configuração da Colisão
+
+1. Selecione o nó "CollisionShape2D"
+2. No painel Inspector:
+   - Shape: CircleShape2D com raio de 16 (ou o tamanho apropriado para o seu jogador)
+
+## Configuração do Sprite
+
+1. Selecione o nó "Sprite2D"
+2. No painel Inspector:
+   - Texture: (temporariamente, você pode usar um placeholder)
+   - Para criar um placeholder colorido:
+     - Clique em "Texture" > "New" > "Gradient Texture2D"
+     - Configure um gradiente com a cor desejada (ex: azul)
+     - Tamanho: 32x32 pixels
+   - Quando tiver a imagem do jogador, substitua este placeholder
+
+## Configuração da Câmera
+
+1. Selecione o nó "Camera2D"
+2. No painel Inspector:
+   - Enabled: On
+   - Position Smoothing: On
+   - Position Smoothing Speed: 5
+   - Rotation Smoothing: Off
+   - Limit Smoothed: On
+   - Drag Horizontal Enabled: On
+   - Drag Vertical Enabled: On
+   - Drag Horizontal Margin: 0.1
+   - Drag Vertical Margin: 0.1
+
+## Configuração do Timer de Invencibilidade
+
+1. Selecione o nó "InvincibilityTimer"
+2. No painel Inspector:
+   - Wait Time: 1.0 (1 segundo de invencibilidade)
+   - One Shot: On
+   - Autostart: Off
+
+## Configuração dos Sons
+
+1. Selecione o nó "ShootSound"
+2. No painel Inspector:
+   - Volume DB: -10
+   - (Quando tiver o arquivo de som, adicione-o aqui)
+
+3. Selecione o nó "HitSound"
+4. No painel Inspector:
+   - Volume DB: -5
+   - (Quando tiver o arquivo de som, adicione-o aqui)
+
+## Configuração das Animações
+
+1. Selecione o nó "AnimationPlayer"
+2. Crie as seguintes animações básicas:
+   - "idle": animação padrão do jogador
+   - "run": animação de movimento
+   - "shoot": animação de tiro
+   - "hit": animação quando o jogador é atingido
+   - "death": animação de morte
+
+   Para cada animação, você pode temporariamente apenas alterar a escala ou rotação do sprite.
+   Quando tiver sprites adequados, você pode criar animações mais elaboradas.
+
+## Salvando a Cena
+
+Salve a cena como "Player.tscn" na pasta "scenes"
+
+## Observações
+
+- Esta é uma configuração básica. Você pode ajustar os valores conforme necessário.
+- Quando as imagens estiverem disponíveis, substitua os placeholders por sprites adequados.
+- As animações podem ser melhoradas quando você tiver sprites de animação para o jogador. 

@@ -1,0 +1,90 @@
+# Instruções para criar a cena do Zumbi no Godot
+
+## Estrutura da Cena
+
+1. Crie uma nova cena com um nó raiz do tipo CharacterBody2D chamado "Zombie"
+
+2. Adicione os seguintes nós à cena:
+   - CollisionShape2D (para colisão do zumbi)
+   - Sprite2D (para a aparência visual do zumbi)
+   - AnimationPlayer (para animações)
+   - AudioStreamPlayer2D (nome: "HitSound", para som quando é atingido)
+   - AudioStreamPlayer2D (nome: "DeathSound", para som quando morre)
+   - CPUParticles2D (nome: "BloodParticles", para efeito de sangue quando atingido)
+
+## Configuração do Zumbi
+
+1. Selecione o nó raiz "Zombie"
+2. No painel Inspector:
+   - Collision > Collision Layer: 2
+   - Collision > Collision Mask: 1 (para colidir com o jogador)
+   - Anexe o script "Zombie.gd" ao nó
+
+## Configuração da Colisão
+
+1. Selecione o nó "CollisionShape2D"
+2. No painel Inspector:
+   - Shape: CircleShape2D com raio de 16 (ou o tamanho apropriado para o seu zumbi)
+
+## Configuração do Sprite
+
+1. Selecione o nó "Sprite2D"
+2. No painel Inspector:
+   - Texture: (temporariamente, você pode usar um placeholder)
+   - Para criar um placeholder colorido:
+     - Clique em "Texture" > "New" > "Gradient Texture2D"
+     - Configure um gradiente com a cor desejada (ex: verde escuro)
+     - Tamanho: 32x32 pixels
+   - Quando tiver a imagem do zumbi, substitua este placeholder
+
+## Configuração dos Sons
+
+1. Selecione o nó "HitSound"
+2. No painel Inspector:
+   - Volume DB: -10
+   - (Quando tiver o arquivo de som, adicione-o aqui)
+
+3. Selecione o nó "DeathSound"
+4. No painel Inspector:
+   - Volume DB: -5
+   - (Quando tiver o arquivo de som, adicione-o aqui)
+
+## Configuração das Partículas de Sangue
+
+1. Selecione o nó "BloodParticles"
+2. No painel Inspector:
+   - Emitting: Off (será ativado via script quando o zumbi for atingido)
+   - Amount: 30
+   - Lifetime: 0.5
+   - One Shot: On
+   - Explosiveness: 0.8
+   - Direction: Vector2(0, 0)
+   - Spread: 180
+   - Initial Velocity: 100
+   - Scale Amount: 3
+   - Color: Vermelho escuro (#990000)
+   - Emission Shape: Sphere
+   - Emission Sphere Radius: 5
+
+## Configuração das Animações
+
+1. Selecione o nó "AnimationPlayer"
+2. Crie as seguintes animações básicas:
+   - "walk": animação de movimento do zumbi
+   - "attack": animação de ataque
+   - "hit": animação quando o zumbi é atingido
+   - "death": animação de morte
+
+   Para cada animação, você pode temporariamente apenas alterar a escala ou rotação do sprite.
+   Quando tiver sprites adequados, você pode criar animações mais elaboradas.
+
+## Salvando a Cena
+
+Salve a cena como "Zombie.tscn" na pasta "scenes"
+
+## Observações
+
+- Esta é uma configuração básica. Você pode ajustar os valores conforme necessário.
+- Quando as imagens estiverem disponíveis, substitua os placeholders por sprites adequados.
+- As animações podem ser melhoradas quando você tiver sprites de animação para o zumbi.
+- Você pode criar diferentes tipos de zumbis duplicando esta cena e ajustando os parâmetros como velocidade, vida e aparência. 

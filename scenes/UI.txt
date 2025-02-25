@@ -1,0 +1,143 @@
+# Instruções para criar a cena da UI no Godot
+
+## Estrutura da Cena
+
+1. Crie uma nova cena com um nó raiz do tipo CanvasLayer chamado "UI"
+
+2. Adicione os seguintes nós à cena:
+   - HBoxContainer (nome: "ScoreContainer")
+     - Label (nome: "ScoreLabel")
+   - HBoxContainer (nome: "WaveContainer")
+     - Label (nome: "WaveLabel")
+   - HBoxContainer (nome: "HealthContainer")
+     - Label (nome: "HealthLabel")
+     - ProgressBar (nome: "HealthBar")
+   - Panel (nome: "GameOverPanel")
+     - VBoxContainer
+       - Label (nome: "GameOverLabel")
+       - Label (nome: "FinalScoreLabel")
+       - Button (nome: "RestartButton")
+
+## Configuração da UI
+
+1. Selecione o nó raiz "UI"
+2. No painel Inspector:
+   - Layer: 1
+   - Anexe o script "UI.gd" ao nó
+
+## Configuração do Contêiner de Pontuação
+
+1. Selecione o nó "ScoreContainer"
+2. No painel Inspector:
+   - Layout > Position: (20, 20)
+   - Size Flags > Horizontal: Begin
+   - Size Flags > Vertical: Begin
+
+3. Selecione o nó "ScoreLabel"
+4. No painel Inspector:
+   - Text: "Score: 0"
+   - Font > Size: 24
+   - Font > Color: Branco (#FFFFFF)
+
+## Configuração do Contêiner de Ondas
+
+1. Selecione o nó "WaveContainer"
+2. No painel Inspector:
+   - Layout > Position: (20, 60)
+   - Size Flags > Horizontal: Begin
+   - Size Flags > Vertical: Begin
+
+3. Selecione o nó "WaveLabel"
+4. No painel Inspector:
+   - Text: "Wave: 1"
+   - Font > Size: 24
+   - Font > Color: Branco (#FFFFFF)
+
+## Configuração do Contêiner de Saúde
+
+1. Selecione o nó "HealthContainer"
+2. No painel Inspector:
+   - Layout > Position: (20, 100)
+   - Size Flags > Horizontal: Begin
+   - Size Flags > Vertical: Begin
+
+3. Selecione o nó "HealthLabel"
+4. No painel Inspector:
+   - Text: "Health:"
+   - Font > Size: 24
+   - Font > Color: Branco (#FFFFFF)
+
+5. Selecione o nó "HealthBar"
+6. No painel Inspector:
+   - Min Value: 0
+   - Max Value: 100
+   - Value: 100
+   - Size > Custom Minimum Size: (200, 24)
+   - Theme Overrides > Styles > Fill: Crie um novo StyleBoxFlat
+     - Bg Color: Vermelho (#FF0000)
+     - Corner Radius: All: 4
+   - Theme Overrides > Styles > Background: Crie um novo StyleBoxFlat
+     - Bg Color: Cinza escuro (#333333)
+     - Corner Radius: All: 4
+
+## Configuração do Painel de Game Over
+
+1. Selecione o nó "GameOverPanel"
+2. No painel Inspector:
+   - Visible: Off (será ativado quando o jogo terminar)
+   - Layout > Anchors Preset: Center
+   - Layout > Size: (400, 300)
+   - Theme Overrides > Styles > Panel: Crie um novo StyleBoxFlat
+     - Bg Color: Preto semi-transparente (#000000AA)
+     - Corner Radius: All: 8
+     - Shadow > Size: 4
+     - Shadow > Color: Preto (#000000)
+
+3. Selecione o nó "VBoxContainer" dentro do GameOverPanel
+4. No painel Inspector:
+   - Layout > Anchors Preset: Full Rect
+   - Layout > Margins: (20, 20, 20, 20)
+   - Alignment > Horizontal: Center
+   - Alignment > Vertical: Center
+   - Separation: 20
+
+5. Selecione o nó "GameOverLabel"
+6. No painel Inspector:
+   - Text: "GAME OVER"
+   - Font > Size: 48
+   - Font > Color: Vermelho (#FF0000)
+   - Alignment > Horizontal: Center
+   - Alignment > Vertical: Center
+
+7. Selecione o nó "FinalScoreLabel"
+8. No painel Inspector:
+   - Text: "Final Score: 0"
+   - Font > Size: 32
+   - Font > Color: Branco (#FFFFFF)
+   - Alignment > Horizontal: Center
+   - Alignment > Vertical: Center
+
+9. Selecione o nó "RestartButton"
+10. No painel Inspector:
+    - Text: "Restart"
+    - Font > Size: 24
+    - Layout > Size: (200, 50)
+    - Theme Overrides > Styles > Normal: Crie um novo StyleBoxFlat
+      - Bg Color: Vermelho escuro (#990000)
+      - Corner Radius: All: 8
+    - Theme Overrides > Styles > Hover: Crie um novo StyleBoxFlat
+      - Bg Color: Vermelho (#FF0000)
+      - Corner Radius: All: 8
+    - Theme Overrides > Styles > Pressed: Crie um novo StyleBoxFlat
+      - Bg Color: Vermelho muito escuro (#660000)
+      - Corner Radius: All: 8
+
+## Salvando a Cena
+
+Salve a cena como "UI.tscn" na pasta "scenes"
+
+## Observações
+
+- Esta é uma configuração básica. Você pode ajustar os valores conforme necessário.
+- Você pode adicionar mais elementos à UI conforme necessário, como um botão de pausa, configurações, etc.
+- Para melhorar a aparência, você pode adicionar ícones, sombras e outros efeitos visuais. 

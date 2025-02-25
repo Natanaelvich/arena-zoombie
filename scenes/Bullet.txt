@@ -1,0 +1,85 @@
+# Instruções para criar a cena do Projétil no Godot
+
+## Estrutura da Cena
+
+1. Crie uma nova cena com um nó raiz do tipo Area2D chamado "Bullet"
+
+2. Adicione os seguintes nós à cena:
+   - CollisionShape2D (para colisão do projétil)
+   - Sprite2D (para a aparência visual do projétil)
+   - CPUParticles2D (nome: "TrailParticles", para o rastro do projétil)
+   - Timer (nome: "LifetimeTimer", para controlar o tempo de vida do projétil)
+   - AudioStreamPlayer2D (nome: "HitSound", para som quando acerta algo)
+
+## Configuração do Projétil
+
+1. Selecione o nó raiz "Bullet"
+2. No painel Inspector:
+   - Collision > Collision Layer: 4
+   - Collision > Collision Mask: 2 (para colidir apenas com zumbis)
+   - Anexe o script "Bullet.gd" ao nó
+   - Conecte o sinal "body_entered" à função "_on_body_entered" no script
+
+## Configuração da Colisão
+
+1. Selecione o nó "CollisionShape2D"
+2. No painel Inspector:
+   - Shape: CircleShape2D com raio de 4 (ou o tamanho apropriado para o seu projétil)
+
+## Configuração do Sprite
+
+1. Selecione o nó "Sprite2D"
+2. No painel Inspector:
+   - Texture: (temporariamente, você pode usar um placeholder)
+   - Para criar um placeholder colorido:
+     - Clique em "Texture" > "New" > "Gradient Texture2D"
+     - Configure um gradiente com a cor desejada (ex: amarelo brilhante)
+     - Tamanho: 8x8 pixels
+   - Quando tiver a imagem do projétil, substitua este placeholder
+
+## Configuração das Partículas de Rastro
+
+1. Selecione o nó "TrailParticles"
+2. No painel Inspector:
+   - Emitting: On
+   - Amount: 20
+   - Lifetime: 0.3
+   - One Shot: Off
+   - Preprocess: 0
+   - Speed Scale: 1
+   - Explosiveness: 0
+   - Randomness: 0.2
+   - Local Coords: Off
+   - Direction: Vector2(0, 0)
+   - Spread: 10
+   - Gravity: Vector2(0, 0)
+   - Initial Velocity: 20
+   - Scale Amount: 2
+   - Scale Amount Curve: Configure para que as partículas diminuam de tamanho ao longo do tempo
+   - Color: Amarelo claro (#FFFF80) ou a cor desejada
+   - Color Ramp: Configure para que as partículas fiquem transparentes ao longo do tempo
+
+## Configuração do Timer de Vida Útil
+
+1. Selecione o nó "LifetimeTimer"
+2. No painel Inspector:
+   - Wait Time: 2.0 (2 segundos de vida útil)
+   - One Shot: On
+   - Autostart: Off (será iniciado pelo script)
+
+## Configuração do Som
+
+1. Selecione o nó "HitSound"
+2. No painel Inspector:
+   - Volume DB: -10
+   - (Quando tiver o arquivo de som, adicione-o aqui)
+
+## Salvando a Cena
+
+Salve a cena como "Bullet.tscn" na pasta "scenes"
+
+## Observações
+
+- Esta é uma configuração básica. Você pode ajustar os valores conforme necessário.
+- Quando as imagens e sons estiverem disponíveis, substitua os placeholders por recursos adequados.
+- Você pode criar diferentes tipos de projéteis duplicando esta cena e ajustando os parâmetros como velocidade, dano e aparência. 
