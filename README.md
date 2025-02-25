@@ -1,6 +1,6 @@
 # Zombie Arena
 
-Um jogo de arena 2D onde o jogador enfrenta hordas de zumbis em uma batalha pela sobrevivência.
+Um jogo de arena 2D onde o jogador enfrenta hordas de zumbis em uma batalha pela sobrevivência. Desenvolvido com Godot Engine.
 
 ## Descrição
 
@@ -56,4 +56,4 @@ Para completar o jogo, você precisará criar e adicionar as seguintes imagens:
 
 ## Desenvolvimento
 
-Este jogo está sendo desenvolvido com Godot Engine 4.2. 
+Este jogo está sendo desenvolvido com Godot Engine 4.2.
