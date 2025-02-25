@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://doml3epmro2o5"]
+
+[node name="Arena" type="Node2D"]
+
+[node name="Floor" type="ColorRect" parent="."]
+offset_top = 2.0
+offset_right = 40.0
+offset_bottom = 42.0
+color = Color(0.231373, 0.231373, 0.231373, 1)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+
+[node name="ColorRect" type="ColorRect" parent="Walls/CollisionShape2D"]
+offset_right = 40.0
+offset_bottom = 2.0
+color = Color(0.101961, 0.101961, 0.101961, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+
+[node name="ColorRect" type="ColorRect" parent="Walls/CollisionShape2D2"]
+offset_top = 40.0
+offset_right = 40.0
+offset_bottom = 42.0
+color = Color(0.101961, 0.101961, 0.101961, 1)
+
+[node name="ZombieContainer" type="Node2D" parent="."]
+position = Vector2(39, 40)
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Spawn1" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(26, 9)
+
+[node name="Spawn2" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(30, 18)
+
+[node name="Spawn3" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(30, 5)
+
+[node name="Spawn4" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(36, 10)
+
+[node name="Spawn5" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(32, 14)
