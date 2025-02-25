@@ -57,3 +57,7 @@ Para completar o jogo, você precisará criar e adicionar as seguintes imagens:
 ## Desenvolvimento
 
 Este jogo está sendo desenvolvido com Godot Engine 4.2.
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
